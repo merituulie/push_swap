@@ -6,11 +6,12 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 21:53:34 by meskelin          #+#    #+#             */
-/*   Updated: 2023/01/27 16:29:18 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:59:50 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../ft_printf/headers/ft_printf.h"
 
 static void	ft_clr_rec(t_list *lst)
 {

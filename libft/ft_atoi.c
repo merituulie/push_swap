@@ -6,25 +6,27 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:34:28 by meskelin          #+#    #+#             */
-/*   Updated: 2023/01/30 14:28:21 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:28:01 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../../ft_printf/headers/ft_printf.h"
 
-static int	ft_check_overflow(long sign)
+static int	is_overflow(int sign, long result)
 {
-	if (sign > 0)
-		return (-1);
+	if ((sign == 1 && result > 2147483647)
+		|| (sign == -1 && result > 2147483648))
+		return (1);
 	else
 		return (0);
 }
 
-// handle error with overflow
 int	ft_atoi(const char *str)
 {
 	long	result;
 	int		sign;
+	int		str_len;
 
 	sign = 1;
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\r'
@@ -37,12 +39,17 @@ int	ft_atoi(const char *str)
 	}
 	else if (*str == '+')
 		str++;
+	str_len = ft_strlen(str);
+	if (str[0] == '\0' || (*str == '0' && str_len > 1))
+		return (-1);
 	result = 0;
-	while (ft_isdigit(*str))
+	while (*str)
 	{
+		if (!ft_isdigit(*str))
+			return (-1);
 		result = result * 10 + *str - '0';
-		if (result < 0)
-			return (ft_check_overflow(sign));
+		if (is_overflow(sign, result))
+			return (-1);
 		str++;
 	}
 	return ((int)result * sign);

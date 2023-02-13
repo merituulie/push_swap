@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/06 16:11:12 by meskelin         ###   ########.fr       */
+/*   Created: 2023/02/06 15:31:10 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/13 17:16:22 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	swap(t_list **head, char stack)
+void	sort_stack(t_list **stack, int sort_algorithm)
 {
-	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
-
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
+	if (sort_algorithm == NO_ALG)
+		return ;
+	else if (sort_algorithm == VERY_SHORT_ALG)
+		sort_very_short(stack);
+	else if (sort_algorithm == SHORT_ALG)
+		sort_short(stack);
+	else if (sort_algorithm == MEDIUM_ALG)
+		sort_medium(stack);
 }

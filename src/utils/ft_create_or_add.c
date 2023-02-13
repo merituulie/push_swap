@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   ft_create_or_add.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 16:54:15 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/10 09:45:05 by meskelin         ###   ########.fr       */
+/*   Created: 2023/02/10 10:49:04 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/10 12:50:44 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/headers/ft_printf.h"
 
-void	rev_rotate(t_list **head, char stack)
+void	add_to_stack(t_list **stack, int data)
 {
-	t_list	*org_first;
-	t_list	*second_to_last;
-	t_list	*new_first;
-
-	if (!head || !*head)
-		return ;
-	org_first = *head;
-	second_to_last = *head;
-	while (second_to_last->next->next)
-		second_to_last = second_to_last->next;
-	new_first = second_to_last->next;
-	new_first->next = org_first;
-	second_to_last->next = NULL;
-	*head = new_first;
-	if (stack != '\0')
-	{
-		ft_printf("r");
-		print_op('r', stack);
-	}
+	if (!*stack)
+		*stack = ft_lstnew(data);
+	else
+		ft_lstadd(stack, ft_lstnew(data));
 }

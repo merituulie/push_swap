@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meskelin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 17:48:12 by meskelin          #+#    #+#             */
-/*   Updated: 2023/01/20 17:50:21 by meskelin         ###   ########.fr       */
+/*   Created: 2022/11/08 21:23:05 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/06 14:49:16 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "../../includes/push_swap.h"
 
-typedef	struct s_list
+int	ft_lstsize(t_list *lst, int max)
 {
-	int		value;
-	t_list*	next;
-}	t_list;
+	int	count;
 
-int	main();
-
-#endif
+	count = 0;
+	if (!lst)
+		return (count);
+	while (lst && count <= max)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
+}

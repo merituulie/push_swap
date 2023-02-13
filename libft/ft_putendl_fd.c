@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/06 16:11:12 by meskelin         ###   ########.fr       */
+/*   Created: 2022/11/08 20:42:26 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/13 17:48:39 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "libft.h"
 
-void	swap(t_list **head, char stack)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
-
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
+	if (!s || !fd || fd < 0)
+		return ;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+	ft_putchar_fd('\n', fd);
 }

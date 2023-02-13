@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/06 16:11:12 by meskelin         ###   ########.fr       */
+/*   Created: 2023/01/27 15:35:35 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/03 13:00:42 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../headers/ft_printf.h"
 
-void	swap(t_list **head, char stack)
+void	print_error(void)
 {
-	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
-
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
+	write(2, "Error\n", 6);
 }

@@ -6,11 +6,12 @@
 #    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 18:49:30 by meskelin          #+#    #+#              #
-#    Updated: 2023/01/27 14:42:51 by meskelin         ###   ########.fr        #
+#    Updated: 2023/02/06 13:13:59 by meskelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
+LIB_NAME = libftprintf.a
 
 BUILD_FLAGS = -Wall -Werror -Wextra -c
 
@@ -18,7 +19,9 @@ SRC_FILES = ft_printf_str \
 ft_printf_nbr \
 ft_printf_hx \
 ft_printf_ptr \
-ft_printf
+ft_printf \
+ft_print_error \
+ft_print_op
 
 H_FILES = /headers/ft_printf
 
@@ -31,9 +34,9 @@ SRCSPRE = $(addprefix ./src/, $(SRCSUFF))
 all: $(NAME)
 
 $(NAME):
-	cc $(BUILD_FLAGS)  $(SRCSPRE)
-	ar rc $(NAME) $(SRCSO)
-	ranlib $(NAME)
+	cc $(BUILD_FLAGS) $(SRCSPRE)
+	ar rc $(LIB_NAME) $(SRCSO)
+	ranlib $(LIB_NAME)
 
 .PHONY: clean
 clean:
@@ -41,7 +44,7 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(LIB_NAME)
 
 .PHONY: re
 re: fclean all

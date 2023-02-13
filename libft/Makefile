@@ -6,11 +6,14 @@
 #    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:13:53 by meskelin          #+#    #+#              #
-#    Updated: 2023/01/30 16:30:30 by meskelin         ###   ########.fr        #
+#    Updated: 2023/02/13 17:49:01 by meskelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+LIB_NAME = libft.a
+
+FT_PRINT_PATH = ../ft_printf
 
 SRC_FILES = ft_isdigit \
 ft_memcpy \
@@ -20,11 +23,11 @@ ft_split \
 ft_atoi \
 ft_memset \
 ft_bzero \
-ft_calloc
+ft_calloc \
+ft_putchar_fd \
+ft_putendl_fd
 
 H_FILES = libft
-
-LIB_NAME = libft.a
 
 SRC = $(addsuffix .c, $(SRC_FILES))
 OBJ = $(addsuffix .o, $(SRC_FILES))
@@ -35,7 +38,7 @@ BUILD_FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	cc $(BUILD_FLAGS) -c $(SRC) -I $(HS)
+	cc $(BUILD_FLAGS) -c $(SRC)
 	ar rc $(LIB_NAME) $(OBJ)
 	ranlib $(LIB_NAME)
 
@@ -46,9 +49,3 @@ fclean: clean
 	rm -f $(LIB_NAME)
 
 re: fclean all
-
-# $(B_SRC:.c=.o):
-# 	cc $(BUILD_FLAGS) -c $(B_SRC) -I $(HS)
-# 	ar rus $(NAME) $(B_SRC:.c=.o)
-
-# bonus: $(B_SRC) $(B_SRC:.c=.o)

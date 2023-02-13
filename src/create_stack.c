@@ -1,67 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_sort.c                                       :+:      :+:    :+:   */
+/*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:10:00 by meskelin          #+#    #+#             */
-/*   Updated: 2023/01/30 16:25:23 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:20:16 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../ft_printf/headers/ft_printf.h"
 #include "../libft/libft.h"
 
-t_list	*create_b_stack(char *input)
+static int	validate_data(char	*input)
 {
-	static t_list	*stack;
-	char			**input_array;
-	int				data;
-
-	input_array = NULL;
-	data = 0;
-	ft_printf("split input: %s\n", input);
-	input_array = ft_split(input, ' ');
-	if (!input_array || !*input_array)
-		return (NULL);
-	while (*input_array)
-	{
-		data = ft_atoi(*input_array);
-		if (!stack)
-		{
-			ft_printf("Create first element wiht input %i\n", data);
-			stack = ft_lstnew(data);
-		}
-		else
-		{
-			ft_printf("Add new element to stack with input %i\n", data);
-			ft_lstadd(&stack, ft_lstnew(data));
-		}
-		input_array++;
-	}
-	return (stack);
+	if (input[0] == '-' && (input[1] && input[1] == '1')
+		&& (input[3] && input[3] == '\0'))
+		return (1);
+	else
+		return (0);
 }
 
-t_list	*stack_sort(char *input)
+t_list	*create_stack(char *input)
 {
 	static t_list	*stack;
+	char			**first;
 	char			**input_array;
 	int				data;
 
-	data = 0;
 	input_array = ft_split(input, ' ');
+	first = input_array;
 	if (!input_array || !*input_array)
-		return (NULL);
+		return (clearlst_throw(&stack, NULL, first, 1));
 	while (*input_array)
 	{
 		data = ft_atoi(*input_array);
-		if (!stack)
-			stack = ft_lstnew(data);
-		else
-			ft_lstadd(&stack, ft_lstnew(data));
+		if (data == -1 && !validate_data(*input_array))
+			return (clearlst_throw(&stack, NULL, first, 1));
+		add_to_stack(&stack, data);
 		input_array++;
 	}
+	clearlst_throw(NULL, NULL, first, 0);
 	return (stack);
 }

@@ -6,11 +6,13 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:38:23 by meskelin          #+#    #+#             */
-/*   Updated: 2023/01/30 16:01:05 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:59:56 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+#include "../../ft_printf/headers/ft_printf.h"
 
 void	rotate(t_list **head, char stack)
 {
@@ -27,6 +29,7 @@ void	rotate(t_list **head, char stack)
 	temp->next = org_first;
 	new_first = org_first->next;
 	org_first->next = NULL;
-	print_op('r', stack);
+	if (stack != '\0')
+		print_op('r', stack);
 	*head = new_first;
 }

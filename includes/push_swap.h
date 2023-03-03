@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:48:12 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 17:16:36 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:15:04 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,75 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define NO_ALG 1
 # define VERY_SHORT_ALG 2
 # define SHORT_ALG 3
+# define KINDA_MEDIUM_ALG 4
 # define MEDIUM_ALG 5
-# define LONG_ALG 6
-
-// # define PUSH 1
-// # define SWAP 2
-// # define ROTATE 3
-// # define REV_ROTATE 4
+# define KINDA_LONG_ALG 6
+# define LONG_ALG 100
 
 typedef struct s_list
 {
 	int				data;
+	int				index;
 	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 
-// typedef struct s_tuple
-// {
-// 	int	count;
-// 	int	operation;
-// }	t_tuple;
+typedef struct s_part
+{
+	int				smallest;
+	int				biggest;
+	struct s_part	*next;
+}	t_part;
 
-// Utils
+// Common
 void	print_error(void);
 void	print_op(char op, char stack);
-void	*clearlst_throw(t_list **stack_a, t_list **stack_b, char **str, int throw);
+void	*clearall_throw(t_list **stack_a,
+			t_list **stack_b, char **str, int throw);
 void	exit_failure(t_list **a, t_list **b, char **str);
 void	exit_success(t_list **a, t_list **b);
+t_list	*find_biggest(t_list *head);
+int		find_smallest(t_list *head);
+int		find_next_smallest(t_list *head, int smaller);
 
 // List
-t_list	*ft_lstnew(int data);
-void	ft_lstclear(t_list **lst);
-void	ft_lstadd(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst, int max);
-void	add_to_stack(t_list **stack, int data);
+t_list	*lstnew(int data);
+void	lstclear(t_list **lst);
+void	lstadd(t_list **lst, t_list *new);
+int		lstsize(t_list *lst);
+int		get_listsize(t_list **head);
+t_list	*lstlast(t_list **lst);
+void	lstadd_to_stack(t_list **stack, int data);
+
+// Parts
+t_part	*prtnew(int smallest, int biggest);
+void	prtclear(t_part **lst);
+void	prtadd(t_part **lst, t_part *new);
+t_part	*prtlast(t_part **lst);
+void	prtadd_to_parts(t_part **stack, int smallest, int biggest, int first_time);
+t_part	*init_parts(t_list **head, int part_count);
 
 // Operations
 void	swap(t_list **head, char stack);
 void	rotate(t_list **head, char stack);
 void	rev_rotate(t_list	**head, char stack);
 void	push(t_list **to_stack, t_list **from_stack, char stack);
+void	rotate_multiple(t_list **head, char stack, int count,
+			void (*f)(t_list **head, char stack));
 
 // Sorting
-int		select_algorithm(t_list **stack);
+int		select_algorithm(int max_count);
 void	sort_very_short(t_list **head);
 void	sort_short(t_list **head);
-void	sort_stack(t_list **stack, int sort_algorithm);
+void	sort_stack(t_list **stack, int sort_algorithm, int max_count);
+void	sort_kinda_medium(t_list **head);
 void	sort_medium(t_list **head);
+void	sort_kinda_long(t_list **head, int max_count);
 
 // Stack
 t_list	*create_stack(char *input);

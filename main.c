@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:43:22 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 18:29:35 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:08:46 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	is_sorted(t_list *stack)
 
 static int	has_duplicates(t_list **stack)
 {
-	t_list *temp_a;
-	t_list *temp_b;
+	t_list	*temp_a;
+	t_list	*temp_b;
 
 	temp_a = *stack;
 	temp_b = temp_a->next;
@@ -42,17 +42,20 @@ static int	has_duplicates(t_list **stack)
 			temp_b = temp_b->next;
 		}
 		temp_a = temp_a->next;
+		if (temp_a && temp_a->next)
+			temp_b = temp_a->next;
 	}
 	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	int i;
-	int algorithm;
-	t_list *stack;
+	int		i;
+	int		algorithm;
+	t_list	*stack;
+	int		max_count;
 
-	if (argc <= 1)
+	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
 		return (0);
 	i = 1;
 	algorithm = 0;
@@ -67,7 +70,8 @@ int	main(int argc, char *argv[])
 		exit_success(&stack, NULL);
 	if (has_duplicates(&stack))
 		exit_failure(&stack, NULL, NULL);
-	algorithm = select_algorithm(&stack);
-	sort_stack(&stack, algorithm);
+	max_count = lstsize(stack);
+	algorithm = select_algorithm(max_count);
+	sort_stack(&stack, algorithm, max_count);
 	exit_success(&stack, NULL);
 }

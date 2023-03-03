@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   clearall_throw.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/17 12:54:53 by meskelin         ###   ########.fr       */
+/*   Created: 2023/02/06 14:14:00 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/24 17:22:50 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../libft/libft.h"
 
-void	swap(t_list **head, char stack)
+static void	clear_input(char **str_array)
 {
-	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
+	char	**temp;
 
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
-	temp = NULL;
-	new_first = NULL;
-	third = NULL;
+	temp = str_array;
+	while (temp && *temp != '\0')
+	{
+		free(*temp);
+		temp++;
+	}
+	free(str_array);
+}
+
+void	*clearall_throw(t_list **stack_a, t_list **stack_b,
+			char **str, int throw)
+{
+	if (str)
+		clear_input(str);
+	if (stack_a)
+		lstclear(stack_a);
+	if (stack_b)
+		lstclear(stack_b);
+	if (throw)
+		print_error();
+	return (NULL);
 }

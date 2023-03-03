@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   find_biggest.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/17 12:54:53 by meskelin         ###   ########.fr       */
+/*   Created: 2023/02/27 11:59:08 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/27 12:01:01 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	swap(t_list **head, char stack)
+t_list	*find_biggest(t_list *head)
 {
 	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
+	t_list	*biggest;
 
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
+	temp = head;
+	biggest = head;
+	while (temp)
+	{
+		if (temp->data >= biggest->data)
+		{
+			biggest = temp;
+		}
+		temp = temp->next;
+	}
 	temp = NULL;
-	new_first = NULL;
-	third = NULL;
+	return (biggest);
 }

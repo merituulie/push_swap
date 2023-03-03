@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   prtnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 15:31:10 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/27 11:56:28 by meskelin         ###   ########.fr       */
+/*   Created: 2023/02/24 16:48:38 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/27 16:51:36 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../libft/libft.h"
 #include "../../ft_printf/headers/ft_printf.h"
 
-void	sort_stack(t_list **stack, int sort_algorithm, int max_count)
+t_part	*prtnew(int smallest, int biggest)
 {
-	if (sort_algorithm == NO_ALG)
-		return ;
-	else if (sort_algorithm == VERY_SHORT_ALG)
-		sort_very_short(stack);
-	else if (sort_algorithm == SHORT_ALG)
-		sort_short(stack);
-	else if (sort_algorithm == KINDA_MEDIUM_ALG)
-		sort_kinda_medium(stack);
-	else if (sort_algorithm == MEDIUM_ALG)
-		sort_medium(stack);
-	else if (sort_algorithm == KINDA_LONG_ALG)
-		sort_kinda_long(stack, max_count);
+	t_part	*new;
+
+	new = (t_part *)ft_calloc(1, sizeof(*new));
+	if (!new)
+		return (NULL);
+	new->smallest = smallest;
+	new->biggest = biggest;
+	new->next = NULL;
+	return (new);
 }

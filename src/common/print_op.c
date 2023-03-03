@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   print_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/17 12:54:53 by meskelin         ###   ########.fr       */
+/*   Created: 2023/01/27 16:49:26 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/13 17:53:07 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../libft/libft.h"
 
-void	swap(t_list **head, char stack)
+void	print_op(char op, char stack)
 {
-	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
+	char	output[3];
 
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
-	temp = NULL;
-	new_first = NULL;
-	third = NULL;
+	output[0] = op;
+	output[1] = stack;
+	output[2] = '\0';
+	ft_putendl_fd(output, 1);
 }

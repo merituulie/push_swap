@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   lstlast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 15:29:32 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/17 12:54:53 by meskelin         ###   ########.fr       */
+/*   Created: 2022/11/08 21:32:54 by meskelin          #+#    #+#             */
+/*   Updated: 2023/02/24 17:20:35 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	swap(t_list **head, char stack)
+t_list	*lstlast(t_list **lst)
 {
-	t_list	*temp;
-	t_list	*new_first;
-	t_list	*third;
+	t_list	*ptr;
 
-	temp = *head;
-	new_first = temp->next;
-	third = new_first->next;
-	temp->next = third;
-	new_first->next = temp;
-	if (stack != '\0')
-		print_op('s', stack);
-	*head = new_first;
-	temp = NULL;
-	new_first = NULL;
-	third = NULL;
+	ptr = *lst;
+	if (!ptr)
+		return (NULL);
+	while (ptr->next)
+		ptr = ptr->next;
+	return (ptr);
 }

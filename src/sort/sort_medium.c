@@ -6,44 +6,29 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:43:43 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 17:32:51 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:05:43 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	find_smallest(t_list *head)
+static int	count_index(t_list *node, int smallest)
 {
-	t_list *temp;
-	t_list *smallest;
-	int count;
+	int	count;
 
-	temp = head;
-	smallest = head;
-	while (temp)
-	{
-		if (temp->data <= smallest->data)
-			smallest = temp;
-		temp = temp->next;
-	}
-	temp = head;
 	count = 0;
-	while (temp)
+	while (node)
 	{
-		if (temp->data == smallest->data)
+		if (node->data == smallest)
 			break ;
 		count++;
-		temp = temp->next;
+		node = node->next;
 	}
 	return (count);
 }
 
-static void	rotate_a(t_list **head, int index, int first_time)
+static void	rotate_middle(t_list **head, int index, int first_time)
 {
-	if (index == 0)
-		return ;
-	if (index == 1)
-		rotate(head, 'a');
 	if (index == 2)
 	{
 		if (first_time)
@@ -67,6 +52,16 @@ static void	rotate_a(t_list **head, int index, int first_time)
 		else
 			rev_rotate(head, 'a');
 	}
+}
+
+static void	rotate_a(t_list **head, int index, int first_time)
+{
+	if (index == 0)
+		return ;
+	if (index == 1)
+		rotate(head, 'a');
+	if (index == 2 || index == 3)
+		rotate_middle(head, index, first_time);
 	if (index == 4)
 		rev_rotate(head, 'a');
 }
@@ -75,12 +70,15 @@ void	sort_medium(t_list **head)
 {
 	t_list	*b;
 	int		index;
+	int		smallest;
 
 	b = NULL;
-	index = find_smallest(*head);
+	smallest = find_smallest(*head);
+	index = count_index(*head, smallest);
 	rotate_a(head, index, 1);
 	push(&b, head, 'b');
-	index = find_smallest(*head);
+	smallest = find_smallest(*head);
+	index = count_index(*head, smallest);
 	rotate_a(head, index, 0);
 	push(&b, head, 'b');
 	sort_short(head);

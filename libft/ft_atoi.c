@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:34:28 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 18:28:01 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:43:20 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,12 @@ static int	is_overflow(int sign, long result)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	long	result;
 	int		sign;
-	int		str_len;
 
 	sign = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\r'
-		|| *str == '\v' || *str == '\f')
-		str++;
 	if (*str == '-')
 	{
 		sign = -1;
@@ -39,8 +35,7 @@ int	ft_atoi(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	str_len = ft_strlen(str);
-	if (str[0] == '\0' || (*str == '0' && str_len > 1))
+	if (str[0] == '\0' || (*str == '0' && ft_strlen(str) > 1))
 		return (-1);
 	result = 0;
 	while (*str)

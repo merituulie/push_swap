@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   lstsize.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 15:31:10 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/27 11:56:28 by meskelin         ###   ########.fr       */
+/*   Created: 2022/11/08 21:23:05 by meskelin          #+#    #+#             */
+/*   Updated: 2023/03/03 15:29:41 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/headers/ft_printf.h"
 
-void	sort_stack(t_list **stack, int sort_algorithm, int max_count)
+int	lstsize(t_list *lst)
 {
-	if (sort_algorithm == NO_ALG)
-		return ;
-	else if (sort_algorithm == VERY_SHORT_ALG)
-		sort_very_short(stack);
-	else if (sort_algorithm == SHORT_ALG)
-		sort_short(stack);
-	else if (sort_algorithm == KINDA_MEDIUM_ALG)
-		sort_kinda_medium(stack);
-	else if (sort_algorithm == MEDIUM_ALG)
-		sort_medium(stack);
-	else if (sort_algorithm == KINDA_LONG_ALG)
-		sort_kinda_long(stack, max_count);
+	int	count;
+
+	count = 0;
+	if (!lst)
+		return (count);
+	while (lst)
+	{
+		ft_printf("[%i]\n", lst->data);
+		count++;
+		lst = lst->next;
+	}
+	return (count);
+}
+
+int	get_listsize(t_list **head)
+{
+	int size;
+
+	size = lstsize(*head);
+	if (size == 0 || size == 1 || size % 2 == 0)
+		return (size);
+	else
+		return (size + 1);
 }

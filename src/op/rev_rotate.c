@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/headers/ft_printf.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
 void	rev_rotate(t_list **head, char stack)
 {

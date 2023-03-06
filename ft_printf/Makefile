@@ -19,11 +19,9 @@ SRC_FILES = ft_printf_str \
 ft_printf_nbr \
 ft_printf_hx \
 ft_printf_ptr \
-ft_printf \
-ft_print_error \
-ft_print_op
+ft_printf
 
-H_FILES = /headers/ft_printf
+H_FILES = /includes/ft_printf
 
 HS = $(addsuffix .h, $(H_FILES))
 SRCSUFF = $(addsuffix .c, $(SRC_FILES))

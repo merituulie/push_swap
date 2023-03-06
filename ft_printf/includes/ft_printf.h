@@ -25,7 +25,5 @@ int		ft_print_nbr(int n, int *count);
 int		ft_print_nbr_u(unsigned int n, int *count);
 int		ft_print_ptr(void	*ptr);
 int		ft_printf(const char *str, ...);
-void	print_error(void);
-void	print_op(char op, char stack);
 
 #endif

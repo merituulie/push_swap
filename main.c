@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf/headers/ft_printf.h"
+#include "./ft_printf/includes/ft_printf.h"
 #include "./includes/push_swap.h"
 
 static int	is_sorted(t_list *stack)

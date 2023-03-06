@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/headers/ft_printf.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
 void	sort_stack(t_list **stack, int sort_algorithm, int part_count)
 {
@@ -25,6 +25,6 @@ void	sort_stack(t_list **stack, int sort_algorithm, int part_count)
 		sort_kinda_medium(stack);
 	else if (sort_algorithm == MEDIUM_ALG)
 		sort_medium(stack);
-	else if (sort_algorithm == KINDA_LONG_ALG)
-		sort_kinda_long(stack, part_count);
+	else if (sort_algorithm >= LONG_ALG)
+		sort_long(stack, part_count);
 }

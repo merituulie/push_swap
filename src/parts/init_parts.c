@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/headers/ft_printf.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
 static int	find_part_biggest(int smallest, t_list **head, int count)
 {

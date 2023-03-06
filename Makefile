@@ -21,6 +21,9 @@ COMMON_SRC = print_error \
 			clearall_throw \
 			find_smallest \
 			find_biggest \
+			search_from_top \
+			search_from_bottom \
+			rttnew \
 			exit
 
 PART_SRC = prtnew \
@@ -40,14 +43,18 @@ LST_SRC = 	lstnew \
 OP_SRC = swap \
 		 push \
 		 rotate \
-		 rev_rotate
+		 rev_rotate \
+		 rotate_multiple \
+		 rotate_a \
+		 rotate_b \
+		 rotate_until_sorted
 
 SORT_SRC = select_algorithm \
 	sort_very_short \
 	sort_short \
 	sort_kinda_medium \
 	sort_medium \
-	sort_kinda_long \
+	sort_long \
 	sort_stack
 
 SRC = create_stack

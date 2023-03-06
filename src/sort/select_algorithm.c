@@ -25,10 +25,6 @@ int	select_algorithm(int max_count)
 		return (SHORT_ALG);
 	else if (max_count <= MEDIUM_ALG)
 		return (MEDIUM_ALG);
-	else if (max_count > MEDIUM_ALG && max_count <= LONG_ALG)
-		return (KINDA_LONG_ALG);
-	else if (max_count > LONG_ALG)
-		return (KINDA_LONG_ALG);
 	else
 		return (LONG_ALG);
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/headers/ft_printf.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
 static void	reinit_indexes(t_list *first_hold, t_list *second_hold)
 {

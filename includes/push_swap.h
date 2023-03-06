@@ -22,8 +22,7 @@
 # define SHORT_ALG 3
 # define KINDA_MEDIUM_ALG 4
 # define MEDIUM_ALG 5
-# define KINDA_LONG_ALG 6
-# define LONG_ALG 100
+# define LONG_ALG 6
 
 typedef struct s_list
 {
@@ -54,6 +53,7 @@ void		*clearall_throw(t_list **stack_a,
 				t_list **stack_b, char **str, int throw);
 void		exit_failure(t_list **a, t_list **b, char **str);
 void		exit_success(t_list **a, t_list **b);
+void		clear_parts(t_part **parts);
 t_list		*find_biggest(t_list *head, int add_index);
 int			find_smallest(t_list *head, int add_index);
 int			find_next_smallest(t_list *head, int smaller);
@@ -92,11 +92,11 @@ int		select_algorithm(int max_count);
 void	sort_very_short(t_list **head);
 void	sort_short(t_list **head);
 void	sort_medium(t_list **head);
-void	sort_b_push(t_list **b_stack, int to_be_pushed);
 void	rotate_a(t_list **a_stack, t_list *first_hold, t_list *second_hold, int max_count);
 void	rotate_b(t_list **b_stack, int to_be_pushed);
-void	sort_long(t_list **head, int part_count);
+void	rotate_until_revsorted(t_list **stack);
 void	sort_kinda_medium(t_list **head);
+void	sort_long(t_list **head, int part_count);
 void	sort_stack(t_list **stack, int sort_algorithm, int part_count);
 
 // Stack

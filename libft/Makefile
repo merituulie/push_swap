@@ -25,6 +25,7 @@ ft_memset \
 ft_bzero \
 ft_calloc \
 ft_putchar_fd \
+ft_putstr_fd \
 ft_putendl_fd
 
 H_FILES = libft

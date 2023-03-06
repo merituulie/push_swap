@@ -24,7 +24,7 @@ void	swap(t_list **head, char stack)
 	temp->next = third;
 	new_first->next = temp;
 	if (stack != '\0')
-		print_op('s', stack);
+		print_op('s', stack, 1);
 	*head = new_first;
 	temp = NULL;
 	new_first = NULL;

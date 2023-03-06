@@ -73,11 +73,11 @@ void	sort_medium(t_list **head)
 	int		smallest;
 
 	b = NULL;
-	smallest = find_smallest(*head);
+	smallest = find_smallest(*head, 0);
 	index = count_index(*head, smallest);
 	rotate_a(head, index, 1);
 	push(&b, head, 'b');
-	smallest = find_smallest(*head);
+	smallest = find_smallest(*head, 0);
 	index = count_index(*head, smallest);
 	rotate_a(head, index, 0);
 	push(&b, head, 'b');

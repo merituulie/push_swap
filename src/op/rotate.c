@@ -13,15 +13,6 @@
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/headers/ft_printf.h"
 
-void	rotate_multiple(t_list **head, char stack, int count, void (*f)(t_list **head, char stack))
-{
-	while (count > 0)
-	{
-		(*f)(head, stack);
-		count--;
-	}
-}
-
 void	rotate(t_list **head, char stack)
 {
 	t_list	*org_first;
@@ -40,7 +31,7 @@ void	rotate(t_list **head, char stack)
 	new_first->prev = NULL;
 	org_first->next = NULL;
 	if (stack != '\0')
-		print_op('r', stack);
+		print_op('r', stack, 1);
 	*head = new_first;
 	org_first = NULL;
 	new_first = NULL;

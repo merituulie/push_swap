@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_op.c                                         :+:      :+:    :+:   */
+/*   rttnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 16:49:26 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 17:53:07 by meskelin         ###   ########.fr       */
+/*   Created: 2023/03/06 18:39:23 by meskelin          #+#    #+#             */
+/*   Updated: 2023/03/06 18:39:23 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../libft/libft.h"
 
-void	print_op(char op, char stack)
+t_rotate	*rttnew(char stack, int rotations, int rev_rotate)
 {
-	char	output[3];
+	t_rotate	*new;
 
-	output[0] = op;
-	output[1] = stack;
-	output[2] = '\0';
-	ft_putendl_fd(output, 1);
+	new = (t_rotate)ft_calloc(1, sizeof(rotation));
+	if (!new)
+		return (NULL);
+	new->stack = stack;
+	new->rotations = rotations;
+	new->rev_rotate = rev_rotate;
+	return (new);
 }

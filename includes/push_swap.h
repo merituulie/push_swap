@@ -40,16 +40,27 @@ typedef struct s_part
 	struct s_part	*next;
 }	t_part;
 
+typedef struct s_rotate
+{
+	char	stack;
+	int		rotations;
+	int		rev_rotate;
+}	t_rotate;
+
 // Common
-void	print_error(void);
-void	print_op(char op, char stack);
-void	*clearall_throw(t_list **stack_a,
-			t_list **stack_b, char **str, int throw);
-void	exit_failure(t_list **a, t_list **b, char **str);
-void	exit_success(t_list **a, t_list **b);
-t_list	*find_biggest(t_list *head);
-int		find_smallest(t_list *head);
-int		find_next_smallest(t_list *head, int smaller);
+void		print_error(void);
+void		print_op(char op, char stack, int endl);
+void		*clearall_throw(t_list **stack_a,
+				t_list **stack_b, char **str, int throw);
+void		exit_failure(t_list **a, t_list **b, char **str);
+void		exit_success(t_list **a, t_list **b);
+t_list		*find_biggest(t_list *head, int add_index);
+int			find_smallest(t_list *head, int add_index);
+int			find_next_smallest(t_list *head, int smaller);
+t_list		*search_from_bottom(t_list **a_stack, int smallest,
+			int biggest, int max_count);
+t_list		*search_from_top(t_list **a_stack, int smallest, int biggest, int max_count);
+t_rotate	*rttnew(char stack, int rotations, int rev_rotate);
 
 // List
 t_list	*lstnew(int data);
@@ -80,13 +91,14 @@ void	rotate_multiple(t_list **head, char stack, int count,
 int		select_algorithm(int max_count);
 void	sort_very_short(t_list **head);
 void	sort_short(t_list **head);
-void	sort_stack(t_list **stack, int sort_algorithm, int max_count);
-void	sort_kinda_medium(t_list **head);
 void	sort_medium(t_list **head);
-void	sort_kinda_long(t_list **head, int max_count);
+void	sort_b_push(t_list **b_stack, int to_be_pushed);
+void	rotate_a(t_list **a_stack, t_list *first_hold, t_list *second_hold, int max_count);
+void	rotate_b(t_list **b_stack, int to_be_pushed);
+void	sort_long(t_list **head, int part_count);
+void	sort_kinda_medium(t_list **head);
+void	sort_stack(t_list **stack, int sort_algorithm, int part_count);
 
 // Stack
 t_list	*create_stack(char *input);
-// delete later
-t_list	*create_b_stack(char *input);
 #endif

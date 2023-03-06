@@ -54,11 +54,13 @@ int	main(int argc, char *argv[])
 	int		algorithm;
 	t_list	*stack;
 	int		max_count;
+	int		part_count;
 
 	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
 		return (0);
 	i = 1;
 	algorithm = 0;
+	part_count = 0;
 	while (argv[i])
 	{
 		stack = create_stack(argv[i]);
@@ -72,6 +74,7 @@ int	main(int argc, char *argv[])
 		exit_failure(&stack, NULL, NULL);
 	max_count = lstsize(stack);
 	algorithm = select_algorithm(max_count);
-	sort_stack(&stack, algorithm, max_count);
+	part_count = select_part_count(algorithm, max_count);
+	sort_stack(&stack, algorithm, part_count);
 	exit_success(&stack, NULL);
 }

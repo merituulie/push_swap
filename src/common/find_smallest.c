@@ -13,15 +13,19 @@
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/headers/ft_printf.h"
 
-int	find_smallest(t_list *head)
+int	find_smallest(t_list *head, int add_index)
 {
 	t_list	*temp;
 	t_list	*smallest;
+	int		index;
 
 	temp = head;
 	smallest = head;
+	index = 0;
 	while (temp)
 	{
+		if (add_index)
+			temp->index = index++;
 		if (temp->data <= smallest->data)
 		{
 			smallest = temp;
@@ -37,8 +41,8 @@ int find_next_smallest(t_list *head, int smaller)
 	int		smallest;
 	t_list	*next_smallest;
 
-	next_smallest = find_biggest(head);
-	smallest = find_smallest(head);
+	next_smallest = find_biggest(head, 0);
+	smallest = find_smallest(head, 0);
 	while (head)
 	{
 		if (head->data < next_smallest->data

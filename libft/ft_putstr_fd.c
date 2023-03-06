@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 21:53:34 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 13:59:50 by meskelin         ###   ########.fr       */
+/*   Created: 2022/11/08 20:36:20 by meskelin          #+#    #+#             */
+/*   Updated: 2022/11/11 10:19:23 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
-#include "../../ft_printf/headers/ft_printf.h"
+#include "libft.h"
 
-static void	ft_clr_rec(t_list *lst)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (!lst)
+	if (!s)
 		return ;
-	ft_clr_rec(lst->next);
-	lst->next = NULL;
-	lst->data = 0;
-	free(lst);
-}
-
-void	ft_lstclear(t_list **lst)
-{
-	if (!lst || !*lst)
-		return ;
-	ft_clr_rec(*lst);
-	*lst = NULL;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

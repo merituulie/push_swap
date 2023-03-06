@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   rotate_until_sorted.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 21:23:05 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/06 14:49:16 by meskelin         ###   ########.fr       */
+/*   Created: 2023/03/06 20:33:03 by meskelin          #+#    #+#             */
+/*   Updated: 2023/03/06 20:33:03 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	ft_lstsize(t_list *lst, int max)
+void	rotate_until_revsorted(t_list **stack)
 {
-	int	count;
+	t_list *smallest;
+	int		r_count;
 
-	count = 0;
-	if (!lst)
-		return (count);
-	while (lst && count <= max)
-	{
-		count++;
-		lst = lst->next;
-	}
-	return (count);
+	size = lstsize(stack);
+	smallest = find_smallest(stack, 1);
+	if (smallest->index == (size - 1))
+		return ;
+	r_count = size - smallest->index - 1;
+	rotate_multiple(stack, 'b', r_count, rev_rotate);
 }

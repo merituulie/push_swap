@@ -13,12 +13,15 @@
 #include "../../includes/push_swap.h"
 #include "../../libft/libft.h"
 
-void	print_op(char op, char stack)
+void	print_op(char op, char stack, int endl)
 {
 	char	output[3];
 
 	output[0] = op;
 	output[1] = stack;
 	output[2] = '\0';
-	ft_putendl_fd(output, 1);
+	if (endl)
+		ft_putendl_fd(output, 1);
+	else
+		ft_putstr_fd(output, 1);
 }

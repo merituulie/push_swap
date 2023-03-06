@@ -34,7 +34,7 @@ void	rev_rotate(t_list **head, char stack)
 	if (stack != '\0')
 	{
 		ft_printf("r");
-		print_op('r', stack);
+		print_op('r', stack, 1);
 	}
 	org_first = NULL;
 	second_to_last = NULL;

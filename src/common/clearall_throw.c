@@ -26,6 +26,12 @@ static void	clear_input(char **str_array)
 	free(str_array);
 }
 
+void	clear_parts(t_part **parts)
+{
+	if (parts)
+		prtclear(parts);
+}
+
 void	*clearall_throw(t_list **stack_a, t_list **stack_b,
 			char **str, int throw)
 {

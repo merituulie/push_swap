@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/headers/ft_printf.h"
 
 static void	ft_clr_rec(t_part *lst)
 {

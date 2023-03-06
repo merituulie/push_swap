@@ -42,7 +42,7 @@ static t_part	*fill_parts(t_list **stack, int count, int part_count)
 
 	prtadd_to_parts(&head, 0, 0, 1);
 	current = head;
-	current->smallest = find_smallest(*stack);
+	current->smallest = find_smallest(*stack, 0);
 	current->biggest = find_part_biggest(current->smallest, stack, count);
 	i = 1;
 	while (i < part_count && current)

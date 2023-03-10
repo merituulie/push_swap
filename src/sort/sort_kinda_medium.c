@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 14:51:59 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/27 11:52:02 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:07:20 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	rotate_middle(t_list **head, int index)
 	}
 }
 
-static void	rotate_a(t_list **head, int index)
+static void	rotate_a_middle(t_list **head, int index)
 {
 	if (index == 0)
 		return ;
@@ -73,7 +73,7 @@ void	sort_kinda_medium(t_list **head)
 
 	b = NULL;
 	index = find_smallest_index(*head);
-	rotate_a(head, index);
+	rotate_a_middle(head, index);
 	push(&b, head, 'b');
 	sort_short(head);
 	push(head, &b, 'a');

@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:43:22 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/27 12:08:46 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:35:12 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ int	main(int argc, char *argv[])
 	if (has_duplicates(&stack))
 		exit_failure(&stack, NULL, NULL);
 	max_count = lstsize(stack);
+	ft_printf("max ount: %i\n", max_count);
 	algorithm = select_algorithm(max_count);
 	part_count = select_part_count(algorithm, max_count);
+	ft_printf("Part count: %i\n", part_count);
 	sort_stack(&stack, algorithm, part_count);
 	exit_success(&stack, NULL);
 }

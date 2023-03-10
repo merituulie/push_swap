@@ -6,7 +6,7 @@
 #    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 17:41:46 by meskelin          #+#    #+#              #
-#    Updated: 2023/02/27 12:14:37 by meskelin         ###   ########.fr        #
+#    Updated: 2023/03/10 12:26:43 by meskelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ PART_SRC = prtnew \
 			prtadd \
 			prtlast \
 			prtadd_to_parts \
+			select_part_count \
 			init_parts
 
 LST_SRC = 	lstnew \

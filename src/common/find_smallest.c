@@ -6,14 +6,14 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:12:13 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/03 15:18:48 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:23:10 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/includes/ft_printf.h"
 
-int	find_smallest(t_list *head, int add_index)
+t_list	*find_smallest(t_list *head, int add_index)
 {
 	t_list	*temp;
 	t_list	*smallest;
@@ -33,12 +33,12 @@ int	find_smallest(t_list *head, int add_index)
 		temp = temp->next;
 	}
 	temp = NULL;
-	return (smallest->data);
+	return (smallest);
 }
 
 int find_next_smallest(t_list *head, int smaller)
 {
-	int		smallest;
+	t_list	*smallest;
 	t_list	*next_smallest;
 
 	next_smallest = find_biggest(head, 0);
@@ -47,7 +47,7 @@ int find_next_smallest(t_list *head, int smaller)
 	{
 		if (head->data < next_smallest->data
 			&& head->data > smaller
-			&& head->data != smallest)
+			&& head->data != smallest->data)
 			next_smallest = head;
 		head = head->next;
 	}

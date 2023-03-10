@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:34:28 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/17 15:43:20 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:13:15 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 static int	is_overflow(int sign, long result)
 {

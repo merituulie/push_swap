@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:43:43 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/24 14:05:43 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:25:32 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	rotate_middle(t_list **head, int index, int first_time)
 	}
 }
 
-static void	rotate_a(t_list **head, int index, int first_time)
+static void	rotate_a_medium(t_list **head, int index, int first_time)
 {
 	if (index == 0)
 		return ;
@@ -73,13 +73,13 @@ void	sort_medium(t_list **head)
 	int		smallest;
 
 	b = NULL;
-	smallest = find_smallest(*head, 0);
+	smallest = find_smallest(*head, 0)->data;
 	index = count_index(*head, smallest);
-	rotate_a(head, index, 1);
+	rotate_a_medium(head, index, 1);
 	push(&b, head, 'b');
-	smallest = find_smallest(*head, 0);
+	smallest = find_smallest(*head, 0)->data;
 	index = count_index(*head, smallest);
-	rotate_a(head, index, 0);
+	rotate_a_medium(head, index, 0);
 	push(&b, head, 'b');
 	sort_short(head);
 	push(head, &b, 'a');

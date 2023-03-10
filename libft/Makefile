@@ -6,14 +6,12 @@
 #    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:13:53 by meskelin          #+#    #+#              #
-#    Updated: 2023/02/13 17:49:01 by meskelin         ###   ########.fr        #
+#    Updated: 2023/03/10 12:11:19 by meskelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 LIB_NAME = libft.a
-
-FT_PRINT_PATH = ../ft_printf
 
 SRC_FILES = ft_isdigit \
 ft_memcpy \

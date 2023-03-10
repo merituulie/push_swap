@@ -6,31 +6,34 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:11:23 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/06 13:11:23 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:50:59 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
 int	select_part_count(int select_algorithm, int size)
 {
-	if (select_algorithm < KINDA_LONG_ALG)
-	{
+	int	part_count;
+
+	part_count = 0;
+	if (select_algorithm < LONG_ALG)
 		return (0);
-	}
-	else if (select_algorithm >= KINDA_LONG_ALG)
+	else if (select_algorithm >= LONG_ALG)
 	{
-		if (size > 100 && size % 10 == 0)
-			return (10);
+		if (size % 2 != 0)
+			part_count = 1;
+		if (size > 100)
+			return (part_count + 10);
 		else if (size % 5 == 0)
 			return (5);
 		else if (size % 4 == 0)
-			return (4);
+			return (part_count + 4);
 		else if (size % 3 == 0)
 			return (3);
 		else if (size % 2 == 0)
-			return (2);
-		else
-			return (1);
+			return (part_count + 2);
 	}
+	return (1);
 }

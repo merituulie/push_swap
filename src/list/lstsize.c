@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 21:23:05 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/03 15:29:41 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:35:59 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	lstsize(t_list *lst)
 		return (count);
 	while (lst)
 	{
-		ft_printf("[%i]\n", lst->data);
 		count++;
 		lst = lst->next;
 	}

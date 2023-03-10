@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:12:55 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/03 15:20:14 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:55:18 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_part	*fill_parts(t_list **stack, int count, int part_count)
 
 	prtadd_to_parts(&head, 0, 0, 1);
 	current = head;
-	current->smallest = find_smallest(*stack, 0);
+	current->smallest = find_smallest(*stack, 0)->data;
 	current->biggest = find_part_biggest(current->smallest, stack, count);
 	i = 1;
 	while (i < part_count && current)
@@ -51,6 +51,7 @@ static t_part	*fill_parts(t_list **stack, int count, int part_count)
 		current = current->next;
 		i++;
 	}
+	current->biggest = find_biggest(*stack, 0)->data;
 	return (head);
 }
 

@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:48:12 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/03 15:15:04 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:39:11 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_rotate
 	char	stack;
 	int		rotations;
 	int		rev_rotate;
+	int		to_be_pushed;
 }	t_rotate;
 
 // Common
@@ -55,12 +56,12 @@ void		exit_failure(t_list **a, t_list **b, char **str);
 void		exit_success(t_list **a, t_list **b);
 void		clear_parts(t_part **parts);
 t_list		*find_biggest(t_list *head, int add_index);
-int			find_smallest(t_list *head, int add_index);
+t_list		*find_smallest(t_list *head, int add_index);
 int			find_next_smallest(t_list *head, int smaller);
 t_list		*search_from_bottom(t_list **a_stack, int smallest,
 			int biggest, int max_count);
 t_list		*search_from_top(t_list **a_stack, int smallest, int biggest, int max_count);
-t_rotate	*rttnew(char stack, int rotations, int rev_rotate);
+t_rotate	*rttnew(char stack, int rotations, int rev_rotate, int to_be_pushed);
 
 // List
 t_list	*lstnew(int data);
@@ -72,6 +73,7 @@ t_list	*lstlast(t_list **lst);
 void	lstadd_to_stack(t_list **stack, int data);
 
 // Parts
+int		select_part_count(int select_algorithm, int size);
 t_part	*prtnew(int smallest, int biggest);
 void	prtclear(t_part **lst);
 void	prtadd(t_part **lst, t_part *new);
@@ -88,16 +90,17 @@ void	rotate_multiple(t_list **head, char stack, int count,
 			void (*f)(t_list **head, char stack));
 
 // Sorting
-int		select_algorithm(int max_count);
-void	sort_very_short(t_list **head);
-void	sort_short(t_list **head);
-void	sort_medium(t_list **head);
-void	rotate_a(t_list **a_stack, t_list *first_hold, t_list *second_hold, int max_count);
-void	rotate_b(t_list **b_stack, int to_be_pushed);
-void	rotate_until_revsorted(t_list **stack);
-void	sort_kinda_medium(t_list **head);
-void	sort_long(t_list **head, int part_count);
-void	sort_stack(t_list **stack, int sort_algorithm, int part_count);
+int			select_algorithm(int max_count);
+void		sort_very_short(t_list **head);
+void		sort_short(t_list **head);
+void		sort_medium(t_list **head);
+t_rotate	*rotate_a(t_list *first_hold, t_list *second_hold, int max_count);
+t_rotate	*rotate_b(t_list **b_stack, int to_be_pushed);
+void		rotate_both(t_list **a_stack, t_list **b_stack, t_rotate *a_rotate, t_rotate *b_rotate);
+void		rotate_until_revsorted(t_list **stack);
+void		sort_kinda_medium(t_list **head);
+void		sort_long(t_list **head, int part_count);
+void		sort_stack(t_list **stack, int sort_algorithm, int part_count);
 
 // Stack
 t_list	*create_stack(char *input);

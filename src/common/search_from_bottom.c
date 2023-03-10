@@ -6,11 +6,12 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:17:42 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/06 14:17:42 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:35:48 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
 t_list	*search_from_bottom(t_list **a_stack, int smallest,
 			int biggest, int max_count)
@@ -22,7 +23,7 @@ t_list	*search_from_bottom(t_list **a_stack, int smallest,
 	index = max_count - 1;
 	while (current->next)
 		current = current->next;
-	while (current->prev && index >= (max_count / 2))
+	while (current->prev && index >= ((max_count - 1) / 2))
 	{
 		if (current->data >= smallest
 			&& current->data <= biggest)

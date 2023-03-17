@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:49:10 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 17:22:38 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:20:58 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,17 @@ static void	search_push_rotate(t_list **b_stack, t_list **a_stack,
 	t_list	*first_hold;
 	t_list	*second_hold;
 	int		max_count;
+	t_list	*b_temp;
 
 	while (1)
 	{
+		b_temp = *b_stack;
+		ft_printf("B stack:\n");
+		while (b_temp)
+		{
+			ft_printf("[%i]\n", b_temp->data);
+			b_temp = b_temp->next;
+		}
 		first_hold = NULL;
 		second_hold = NULL;
 		max_count = get_listsize(a_stack);

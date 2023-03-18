@@ -13,39 +13,111 @@
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/includes/ft_printf.h"
 
-static t_rotate	*rotate_or_revrotate(t_list *node, int size, int to_be_pushed)
+static t_rotate	*rotate_or_revrotate_biggest(t_list *smallest, int size, int biggest)
 {
-	int	halfway;
+	int halfway;
 
 	halfway = size / 2;
-	to_be_pushed = 0;
-	if (node->index == 0)
+	ft_printf("Got %i as the previous node ", smallest->data);
+	ft_printf("in index %i ", smallest->index);
+	if (smallest->index == (size - 1))
 	{
-		ft_printf("Node found in index 0, rotating once\n");
-		return (rttnew('b', 1, 0, node->data));
+		if (smallest->prev->data != biggest)
+			return (rttnew('b', 0, 0, biggest));
+		else
+			return (rttnew('b', 1, 1, biggest));
 	}
-	else if (node->index == (size - 1))
+	if (smallest->index < halfway)
 	{
-		ft_printf("Node found in last index %i, no need for rotation\n");
-		return (rttnew('b', 0, 0, node->index));
-	}
-	if (node->index < halfway)
-	{
-		ft_printf("Node before halfway.\n");
-		ft_printf("Rotating %i times to push.\n", node->index + 1);
-		return (rttnew('b', node->index + 1, 0, node->data));
+		if (smallest->next && smallest->next->data != biggest)
+		{
+			return (rttnew('b', smallest->index, 0, biggest));
+		}
+		else
+			return (rttnew('b', smallest->index + 1, 0, biggest));
 	}
 	else
 	{
-		if (size == 3 && node->index == 1)
+		if (smallest->next && smallest->next->data != biggest)
 		{
-			ft_printf("Node found halfway with stack size 3, rev rotating once to get %i to the bottom\n");
-			return (rttnew('b', 1, 1, node->index));
+			return (rttnew('b', (size - smallest->index), 1, biggest));
 		}
-		ft_printf("Node in the middle or after halfway.\n");
-		ft_printf("Rotating %i times to push.\n", (size - node->index));
-		return (rttnew('b', (size - node->index - 1), 1, node->data));
+		else
+			return (rttnew('b', (size - smallest->index - 1), 1, biggest));
 	}
+	return (rttnew('b', 0, 0, biggest));
+}
+
+static t_rotate	*rotate_or_revrotate_smallest(t_list *biggest, int size, int smallest)
+{
+	int halfway;
+
+	halfway = size / 2;
+	ft_printf("Got %i as the previous node ", biggest->data);
+	ft_printf("in index %i ", biggest->index);
+	if (biggest->index == (size - 1))
+	{
+		if (biggest->prev->data != smallest)
+			return (rttnew('b', 0, 0, smallest));
+		else
+			return (rttnew('b', 1, 1, smallest));
+	}
+	if (biggest->index < halfway)
+	{
+		if (biggest->next && biggest->next->data != smallest)
+		{
+			return (rttnew('b', biggest->index, 0, smallest));
+		}
+		else
+			return (rttnew('b', biggest->index + 1, 0, smallest));
+	}
+	else
+	{
+		if (biggest->next && biggest->next->data != smallest)
+		{
+			return (rttnew('b', (size - biggest->index), 1, smallest));
+		}
+		else
+			return (rttnew('b', (size - biggest->index - 1), 1, smallest));
+	}
+	return (rttnew('b', 0, 0, smallest));
+}
+
+static t_rotate	*rotate_or_revrotate(t_list *node, int size, int to_be_pushed)
+{
+	int halfway;
+
+	halfway = size / 2;
+	ft_printf("Got %i as the previous node ", node->data);
+	ft_printf("in index %i ", node->index);
+	ft_printf("with value %i to be pushed\n", to_be_pushed);
+	ft_printf("%i is halfway\n", halfway);
+	if (node->index == (size - 1))
+	{
+		if (node->prev->data < node->data)
+			return (rttnew('b', 0, 0, to_be_pushed));
+		else
+			return (rttnew('b', 1, 1, to_be_pushed));
+	}
+	if (node->index < halfway)
+	{
+		if (node->next && node->next->data > node->data)
+		{
+			return (rttnew('b', node->index + 1, 0, to_be_pushed));
+		}
+		else
+			return (rttnew('b', node->index, 0, to_be_pushed));
+	}
+	else
+	{
+		if (node->next && node->next->data > node->data)
+		{
+			return (rttnew('b', (size - 1 - node->index), 1, to_be_pushed));
+		}
+		else
+			return (rttnew('b', (size - node->index), 1, to_be_pushed));
+	}
+	return (rttnew('b', 0, 0, to_be_pushed));
 }
 
 static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int smallest)
@@ -56,7 +128,7 @@ static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int s
 	int		p_index;
 
 	n_index = 0;
-	p_index = lstsize(*stack);
+	p_index = lstsize(*stack) - 1;
 	next = *stack;
 	previous = *stack;
 	while (previous->next)
@@ -64,12 +136,9 @@ static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int s
 	while (next->next)
 	{
 		next->index = n_index;
+		if (n_index != 0)
+			p_index = n_index - 1;
 		previous->index = p_index;
-		ft_printf("biggest %i\n", biggest);
-		ft_printf("smallest %i\n", smallest);
-		ft_printf("to_be_pushed %i\n", to_be_pushed);
-		ft_printf("previous %i\n", previous->data);
-		ft_printf("next %i\n\n", next->data);
 		if ((previous->data == biggest && next->data == smallest)
 			|| (next->data == biggest && previous->data == smallest))
 		{
@@ -77,7 +146,6 @@ static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int s
 				previous = *stack;
 			else
 				previous = next;
-			p_index = n_index;
 			next = next->next;
 			n_index++;
 			continue ;
@@ -89,7 +157,6 @@ static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int s
 			previous = *stack;
 		else
 			previous = next;
-		p_index = n_index;
 		next = next->next;
 		n_index++;
 	}
@@ -118,29 +185,46 @@ static t_rotate	*find_rotate(t_list **stack, int to_be_pushed, int size)
 	{
 		if (smallest->index == (size - 1))
 		{
-			ft_printf("Found new smallest for the previous smallest %i in last index, rev rotating once.\n", smallest->data);
-			return (rttnew('b', 1, 1, to_be_pushed));
+			if (biggest->index == 0)
+				return (rttnew('b', 0, 0, to_be_pushed));
+			else
+			{
+				ft_printf("Found new smallest for the previous smallest %i in last index, rev rotating once.\n", smallest->data);
+				return (rttnew('b', 1, 1, to_be_pushed));
+			}
 		}
 		else if (smallest->index == 0)
 		{
-			ft_printf("Found new smallest for the previous smallest %i in first index, no rotation.\n", smallest->data);
-			return (rttnew('b', 0, 0, smallest->data));
+			if (smallest->next->data == biggest->data)
+				return (rttnew('b', 1, 0, to_be_pushed));
+			else
+			{
+				ft_printf("Found new smallest for the previous smallest %i in first index, no rotation.\n", smallest->data);
+				return (rttnew('b', 0, 0, smallest->data));
+			}
 		}
-		return (rotate_or_revrotate(smallest, size, to_be_pushed));
+		return (rotate_or_revrotate_smallest(biggest, size, smallest->data));
 	}
 	if (to_be_pushed > biggest->data)
 	{
 		if (biggest->index == (size - 1))
 		{
-			ft_printf("Found new biggest for the previous biggest %i in last index, rev rotating once.\n", biggest->data);
-			return (rttnew('b', 1, 1, to_be_pushed));
+			if (smallest->index == 0)
+				return (rttnew('b', 0, 0, to_be_pushed));
+			else
+				return (rttnew('b', 1, 1, to_be_pushed));
 		}
 		else if (biggest->index == 0)
 		{
-			ft_printf("Found new biggest for the previous biggest %i in first, no rotation.\n", biggest->data);
-			return (rttnew('b', 0, 0, biggest->data));
+			if (biggest->next->data != smallest->data)
+			{
+				ft_printf("Found new biggest for the previous biggest %i in first, no rotation.\n", biggest->data);
+				return (rttnew('b', 0, 0, biggest->data));
+			}
+			else
+				return (rttnew('b', 1, 0, biggest->data));
 		}
-		return (rotate_or_revrotate(biggest, size, to_be_pushed));
+		return (rotate_or_revrotate_biggest(smallest, size, biggest->data));
 	}
 	ft_printf("%i not biggest or smallest, checking for the position in the middle\n", to_be_pushed);
 	return (rotate_or_revrotate(middle_value(stack, to_be_pushed, biggest->data, smallest->data), size, to_be_pushed));
@@ -155,6 +239,8 @@ t_rotate	*rotate_b(t_list **b_stack, int to_be_pushed)
 	ft_printf("B size %i\n", size);
 	if (size <= 1)
 		return (rttnew('b', 0, 0, to_be_pushed));
+	if (size == 3)
+		sort_short(b_stack);
 	rotate = find_rotate(b_stack, to_be_pushed, size);
 	ft_printf("B rotation %i times rev as %i for value %i\n", rotate->rotations, rotate->rev_rotate, to_be_pushed);
 	return (rotate);

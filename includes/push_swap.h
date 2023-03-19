@@ -62,6 +62,11 @@ t_list		*search_from_bottom(t_list **a_stack, int smallest,
 			int biggest, int max_count);
 t_list		*search_from_top(t_list **a_stack, int smallest, int biggest, int max_count);
 t_rotate	*rttnew(char stack, int rotations, int rev_rotate, int to_be_pushed);
+t_rotate	*rotate_last_index(t_list *node);
+t_rotate	*rotate_before_halfway(t_list *node);
+t_rotate	*rotate_after_halfway(t_list *node, int size);
+t_rotate	*rotate_for_biggest_or_smallest_middle(t_list *other_end, int size, int previous_value);
+t_rotate	*rotate_first_or_last_bs(t_list *first, t_list *second, int to_be_pushed);
 
 // List
 t_list	*lstnew(int data);
@@ -97,7 +102,7 @@ void		sort_medium(t_list **head);
 t_rotate	*rotate_a(t_list *first_hold, t_list *second_hold, int max_count);
 t_rotate	*rotate_b(t_list **b_stack, int to_be_pushed);
 void		rotate_both(t_list **a_stack, t_list **b_stack, t_rotate *a_rotate, t_rotate *b_rotate);
-void		rotate_until_revsorted(t_list **stack);
+void		rotate_until_sorted(t_list **stack);
 void		sort_kinda_medium(t_list **head);
 void		sort_long(t_list **head, int part_count);
 void		sort_stack(t_list **stack, int sort_algorithm, int part_count);

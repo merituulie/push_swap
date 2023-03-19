@@ -64,8 +64,9 @@ static void	rotate_stacks(t_list **a_stack, t_list **b_stack, t_list *first_hold
 	// if (b_rotate)
 	// 	ft_printf("B needs to be rotated %i times in reverse: %i\n", b_rotate->rotations, b_rotate->rev_rotate);
 	rotate_both(a_stack, b_stack, a_rotate, b_rotate);
-	// free(a_rotate);
-	// free(b_rotate);
+	ft_printf("out of rotation\n");
+	free(a_rotate);
+	free(b_rotate);
 }
 
 static void	search_push_rotate(t_list **b_stack, t_list **a_stack,
@@ -144,9 +145,9 @@ void	sort_long(t_list **head, int part_count)
 		}
 		parts = parts->next;
 	}
-	// rotate_until_revsorted(&b);
-	// while (b)
-	// 	push(head, &b, 'a');
-	// clear_parts(&parts);
-	// exit_success(head, &b);
+	rotate_until_sorted(&b);
+	while (b)
+		push(head, &b, 'a');
+	clear_parts(&parts);
+	exit_success(head, &b);
 }

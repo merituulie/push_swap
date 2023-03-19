@@ -13,76 +13,6 @@
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/includes/ft_printf.h"
 
-static t_rotate	*rotate_or_revrotate_biggest(t_list *smallest, int size, int biggest)
-{
-	int halfway;
-
-	halfway = size / 2;
-	ft_printf("Got %i as the previous node ", smallest->data);
-	ft_printf("in index %i ", smallest->index);
-	if (smallest->index == (size - 1))
-	{
-		if (smallest->prev->data != biggest)
-			return (rttnew('b', 0, 0, biggest));
-		else
-			return (rttnew('b', 1, 1, biggest));
-	}
-	if (smallest->index < halfway)
-	{
-		if (smallest->next && smallest->next->data != biggest)
-		{
-			return (rttnew('b', smallest->index, 0, biggest));
-		}
-		else
-			return (rttnew('b', smallest->index + 1, 0, biggest));
-	}
-	else
-	{
-		if (smallest->next && smallest->next->data != biggest)
-		{
-			return (rttnew('b', (size - smallest->index), 1, biggest));
-		}
-		else
-			return (rttnew('b', (size - smallest->index - 1), 1, biggest));
-	}
-	return (rttnew('b', 0, 0, biggest));
-}
-
-static t_rotate	*rotate_or_revrotate_smallest(t_list *biggest, int size, int smallest)
-{
-	int halfway;
-
-	halfway = size / 2;
-	ft_printf("Got %i as the previous node ", biggest->data);
-	ft_printf("in index %i ", biggest->index);
-	if (biggest->index == (size - 1))
-	{
-		if (biggest->prev->data != smallest)
-			return (rttnew('b', 0, 0, smallest));
-		else
-			return (rttnew('b', 1, 1, smallest));
-	}
-	if (biggest->index < halfway)
-	{
-		if (biggest->next && biggest->next->data != smallest)
-		{
-			return (rttnew('b', biggest->index, 0, smallest));
-		}
-		else
-			return (rttnew('b', biggest->index + 1, 0, smallest));
-	}
-	else
-	{
-		if (biggest->next && biggest->next->data != smallest)
-		{
-			return (rttnew('b', (size - biggest->index), 1, smallest));
-		}
-		else
-			return (rttnew('b', (size - biggest->index - 1), 1, smallest));
-	}
-	return (rttnew('b', 0, 0, smallest));
-}
-
 static t_rotate	*rotate_or_revrotate(t_list *node, int size, int to_be_pushed)
 {
 	int halfway;
@@ -93,31 +23,25 @@ static t_rotate	*rotate_or_revrotate(t_list *node, int size, int to_be_pushed)
 	ft_printf("with value %i to be pushed\n", to_be_pushed);
 	ft_printf("%i is halfway\n", halfway);
 	if (node->index == (size - 1))
-	{
-		if (node->prev->data < node->data)
-			return (rttnew('b', 0, 0, to_be_pushed));
-		else
-			return (rttnew('b', 1, 1, to_be_pushed));
-	}
+		rotate_last_index(node, to_be_pushed);
 	if (node->index < halfway)
-	{
-		if (node->next && node->next->data > node->data)
-		{
-			return (rttnew('b', node->index + 1, 0, to_be_pushed));
-		}
-		else
-			return (rttnew('b', node->index, 0, to_be_pushed));
-	}
+		rotate_before_halfway(node, to_be_pushed);
 	else
-	{
-		if (node->next && node->next->data > node->data)
-		{
-			return (rttnew('b', (size - 1 - node->index), 1, to_be_pushed));
-		}
-		else
-			return (rttnew('b', (size - node->index), 1, to_be_pushed));
-	}
+		rotate_after_halfway(node, size, to_be_pushed);
 	return (rttnew('b', 0, 0, to_be_pushed));
+}
+
+static t_list	*find_previous_node(int to_be_pushed, t_list *previous, t_list *next)
+{
+	if (to_be_pushed < next->data)
+	{
+		ft_printf("found the previous value %i", previous->data);
+		ft_printf("in index  %i\n", previous->index);
+		return (previous);
+	}
+	ft_printf("found the previous value %i", next->data);
+	ft_printf("in index %i\n", next->index);
+	return (next);
 }
 
 static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int smallest)
@@ -160,18 +84,7 @@ static t_list	*middle_value(t_list **stack, int to_be_pushed, int biggest, int s
 		next = next->next;
 		n_index++;
 	}
-	if (to_be_pushed < next->data)
-	{
-		ft_printf("found the previous value %i", previous->data);
-		ft_printf("in index  %i\n", previous->index);
-		return (previous);
-	}
-	else
-	{
-		ft_printf("found the previous value %i", next->data);
-		ft_printf("in index %i\n", next->index);
-		return (next);
-	}
+	return (find_previous_node(to_be_pushed, previous, next));
 }
 
 static t_rotate	*find_rotate(t_list **stack, int to_be_pushed, int size)
@@ -183,48 +96,15 @@ static t_rotate	*find_rotate(t_list **stack, int to_be_pushed, int size)
 	biggest = find_biggest(*stack, 1);
 	if (to_be_pushed < smallest->data)
 	{
-		if (smallest->index == (size - 1))
-		{
-			if (biggest->index == 0)
-				return (rttnew('b', 0, 0, to_be_pushed));
-			else
-			{
-				ft_printf("Found new smallest for the previous smallest %i in last index, rev rotating once.\n", smallest->data);
-				return (rttnew('b', 1, 1, to_be_pushed));
-			}
-		}
-		else if (smallest->index == 0)
-		{
-			if (smallest->next->data == biggest->data)
-				return (rttnew('b', 1, 0, to_be_pushed));
-			else
-			{
-				ft_printf("Found new smallest for the previous smallest %i in first index, no rotation.\n", smallest->data);
-				return (rttnew('b', 0, 0, smallest->data));
-			}
-		}
-		return (rotate_or_revrotate_smallest(biggest, size, smallest->data));
+		if (smallest->index == 0 || smallest->index == (size - 1))
+			return (rotate_first_or_last_bs(smallest, biggest, to_be_pushed));
+		return (rotate_for_biggest_or_smallest_middle(biggest, size, smallest->data));
 	}
 	if (to_be_pushed > biggest->data)
 	{
-		if (biggest->index == (size - 1))
-		{
-			if (smallest->index == 0)
-				return (rttnew('b', 0, 0, to_be_pushed));
-			else
-				return (rttnew('b', 1, 1, to_be_pushed));
-		}
-		else if (biggest->index == 0)
-		{
-			if (biggest->next->data != smallest->data)
-			{
-				ft_printf("Found new biggest for the previous biggest %i in first, no rotation.\n", biggest->data);
-				return (rttnew('b', 0, 0, biggest->data));
-			}
-			else
-				return (rttnew('b', 1, 0, biggest->data));
-		}
-		return (rotate_or_revrotate_biggest(smallest, size, biggest->data));
+		if (biggest->index == 0 || biggest->index == (size - 1))
+			return (rotate_first_or_last_bs(biggest, smallest, to_be_pushed));
+		return (rotate_for_biggest_or_smallest_middle(smallest, size, biggest->data));
 	}
 	ft_printf("%i not biggest or smallest, checking for the position in the middle\n", to_be_pushed);
 	return (rotate_or_revrotate(middle_value(stack, to_be_pushed, biggest->data, smallest->data), size, to_be_pushed));

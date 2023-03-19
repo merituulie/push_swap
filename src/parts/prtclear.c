@@ -12,21 +12,21 @@
 
 #include "../../includes/push_swap.h"
 
-static void	ft_clr_rec(t_part *lst)
+static void	ft_clr_rec(t_part *prt)
 {
-	if (!lst)
+	if (!prt)
 		return ;
-	ft_clr_rec(lst->next);
-	lst->next = NULL;
-	lst->smallest = 0;
-	lst->biggest = 0;
-	free(lst);
+	ft_clr_rec(prt->next);
+	prt->next = NULL;
+	prt->smallest = 0;
+	prt->biggest = 0;
+	free(prt);
 }
 
-void	prtclear(t_part **lst)
+void	prtclear(t_part **prt)
 {
-	if (!lst)
+	if (!prt)
 		return ;
-	ft_clr_rec(*lst);
-	*lst = NULL;
+	ft_clr_rec(*prt);
+	*prt = NULL;
 }

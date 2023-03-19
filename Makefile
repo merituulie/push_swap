@@ -14,7 +14,7 @@ NAME = push_swap
 FT_PRINT_PATH = ./ft_printf
 LIBFT_PATH = ./libft
 
-BUILD_FLAGS = -Wall -Werror -Wextra
+BUILD_FLAGS = -Wall -Wextra -Werror
 
 COMMON_SRC = print_error \
 			print_op \
@@ -24,6 +24,7 @@ COMMON_SRC = print_error \
 			search_from_top \
 			search_from_bottom \
 			rttnew \
+			rotate_index \
 			exit
 
 PART_SRC = prtnew \
@@ -87,15 +88,16 @@ $(NAME):
 
 .PHONY: clean
 clean:
-	make clean -C $(LIBFT_PATH)
-	make clean -C $(FT_PRINT_PATH)
+	make fclean -C $(LIBFT_PATH)
+	make fclean -C $(FT_PRINT_PATH)
 	rm -f $(SRCSO)
 
 .PHONY: fclean
 fclean: clean
-	make fclean -C $(LIBFT_PATH)
-	make fclean -C $(FT_PRINT_PATH)
+	make clean -C $(LIBFT_PATH)
+	make clean -C $(FT_PRINT_PATH)
 	rm -f $(NAME)
 
 .PHONY: re
 re: fclean all
+

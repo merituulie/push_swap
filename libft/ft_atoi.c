@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	is_overflow(int sign, long result)
+static int	is_overflow(int sign, signed long result)
 {
 	if ((sign == 1 && result > 2147483647)
 		|| (sign == -1 && result > 2147483648))

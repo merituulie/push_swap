@@ -68,6 +68,10 @@ t_rotate	*rotate_size3(t_list *node, int to_be_pushed);
 t_rotate	*rotate_size2(t_list *node, int to_be_pushed);
 t_rotate	*rotate_for_smallest(t_list *small, int size);
 t_rotate	*rotate_for_biggest(t_list *big, int size);
+t_rotate	*rotate_for_smallest_middle(t_list *small, int size);
+t_rotate	*rotate_for_biggest_middle(t_list *big, int size);
+int			is_bs(t_list *previous, t_list *next, int biggest, int smallest);
+int			is_middle(int to_be_pushed, t_list *previous, t_list *next);
 
 // List
 t_list	*lstnew(int data);

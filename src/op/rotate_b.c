@@ -31,7 +31,7 @@ static t_rotate	*rotate_or_revrotate(t_list *smaller, t_list *bigger, int size, 
 	if (smaller->index < halfway)
 		return (rttnew('b', smaller->index, 0, smaller->data));
 	else
-		return (rttnew('b', (size - smaller->index - 1), 1, smaller->data));
+		return (rttnew('b', (size - smaller->index), 1, smaller->data));
 }
 
 static t_rotate	*find_rotation(int to_be_pushed, t_list *previous, t_list *next, int size)
@@ -63,8 +63,7 @@ static t_rotate	*middle_value(t_list **stack, int to_be_pushed, int biggest, int
 		next->index = n_index;
 		previous->index = p_index;
 		ft_printf("previous %i next %i to be pushed %i\n", previous->data, next->data, to_be_pushed);
-		if ((previous->data == biggest && next->data == smallest)
-			|| (next->data == biggest && previous->data == smallest))
+		if (is_bs(previous, next, biggest, smallest))
 		{
 			if (n_index == 0)
 				previous = *stack;
@@ -74,8 +73,7 @@ static t_rotate	*middle_value(t_list **stack, int to_be_pushed, int biggest, int
 			n_index++;
 			continue ;
 		}
-		else if ((to_be_pushed < previous->data && to_be_pushed > next->data)
-			|| (to_be_pushed > previous->data && to_be_pushed < next->data))
+		else if (is_middle(to_be_pushed, previous, next))
 			break;
 		if (n_index == 0)
 			previous = *stack;

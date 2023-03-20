@@ -25,6 +25,7 @@ COMMON_SRC = print_error \
 			search_from_bottom \
 			rttnew \
 			rotate_index \
+			validate_middle_value \
 			exit
 
 PART_SRC = prtnew \

@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:48:12 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/13 18:15:16 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:13:05 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ t_list		*search_from_bottom(t_list **a_stack, int smallest,
 			int biggest, int max_count);
 t_list		*search_from_top(t_list **a_stack, int smallest, int biggest, int max_count);
 t_rotate	*rttnew(char stack, int rotations, int rev_rotate, int to_be_pushed);
-t_rotate	*rotate_last_index(t_list *node);
-t_rotate	*rotate_before_halfway(t_list *node);
-t_rotate	*rotate_after_halfway(t_list *node, int size);
 t_rotate	*rotate_for_biggest_or_smallest_middle(t_list *other_end, int size, int previous_value);
 t_rotate	*rotate_first_or_last_bs(t_list *first, t_list *second, int to_be_pushed);
+t_rotate	*rotate_size3(t_list *node, int to_be_pushed);
+t_rotate	*rotate_size2(t_list *node, int to_be_pushed);
+t_rotate	*rotate_for_smallest(t_list *small, int size);
+t_rotate	*rotate_for_biggest(t_list *big, int size);
 
 // List
 t_list	*lstnew(int data);

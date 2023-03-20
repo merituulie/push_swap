@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:49:10 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/13 14:20:58 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:22:59 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	reinit_indexes(t_list *first_hold, t_list *second_hold)
 static int	just_break(int max_count, t_list **a_stack, t_list **b_stack)
 {
 	t_rotate *rotation;
+
 	if (max_count == 0)
 		return (1);
 	if (max_count == 1)
@@ -60,11 +61,12 @@ static void	rotate_stacks(t_list **a_stack, t_list **b_stack, t_list *first_hold
 	max_count = get_listsize(a_stack);
 	a_rotate = rotate_a(first_hold, second_hold, max_count);
 	b_rotate = rotate_b(b_stack, a_rotate->to_be_pushed);
+	ft_printf("rotations for b %i times in rev %i\n", b_rotate->rotations, b_rotate->rev_rotate);
 	//ft_printf("A needs to be rotated %i times in reverse: %i for value %i \n", a_rotate->rotations, a_rotate->rev_rotate, a_rotate->to_be_pushed);
 	// if (b_rotate)
 	// 	ft_printf("B needs to be rotated %i times in reverse: %i\n", b_rotate->rotations, b_rotate->rev_rotate);
 	rotate_both(a_stack, b_stack, a_rotate, b_rotate);
-	ft_printf("out of rotation\n");
+	// ft_printf("out of rotation\n");
 	free(a_rotate);
 	free(b_rotate);
 }
@@ -79,13 +81,6 @@ static void	search_push_rotate(t_list **b_stack, t_list **a_stack,
 
 	while (1)
 	{
-		b_temp = *b_stack;
-		ft_printf("B stack:\n");
-		while (b_temp)
-		{
-			ft_printf("[%i]\n", b_temp->data);
-			b_temp = b_temp->next;
-		}
 		first_hold = NULL;
 		second_hold = NULL;
 		max_count = get_listsize(a_stack);
@@ -101,8 +96,15 @@ static void	search_push_rotate(t_list **b_stack, t_list **a_stack,
 			break ;
 		rotate_stacks(a_stack, b_stack, first_hold, second_hold);
 		reinit_indexes(first_hold, second_hold);
-		ft_printf("pushing %i to b\n", (*a_stack)->data);
+		//ft_printf("pushing %i to b\n", (*a_stack)->data);
 		push(b_stack, a_stack, 'b');
+		b_temp = *b_stack;
+		ft_printf("B stack after ush from a\n");
+		while (b_temp)
+		{
+			ft_printf("[%i]\n", b_temp->data);
+			b_temp = b_temp->next;
+		}
 	}
 }
 
@@ -112,7 +114,7 @@ void	sort_long(t_list **head, int part_count)
 	t_part	*parts_temp;
 	t_list	*b;
 	t_list	*temp;
-	t_list	*b_temp;
+	t_list *b_temp;
 
 	parts = NULL;
 	b = NULL;
@@ -129,25 +131,25 @@ void	sort_long(t_list **head, int part_count)
 	{
 		ft_printf("parts %i - %i\n", parts->smallest, parts->biggest);
 		search_push_rotate(&b, head, parts->smallest, parts->biggest);
-		temp = *head;
-		ft_printf("A stack:\n");
-		while (temp)
-		{
-			ft_printf("[%i]\n", temp->data);
-			temp = temp->next;
-		}
-		b_temp = b;
-		ft_printf("B stack:\n");
-		while (b_temp)
-		{
-			ft_printf("[%i]\n", b_temp->data);
-			b_temp = b_temp->next;
-		}
 		parts = parts->next;
 	}
-	rotate_until_sorted(&b);
-	while (b)
-		push(head, &b, 'a');
+	b_temp = b;
+	ft_printf("B stack final\n");
+	while (b_temp)
+	{
+		ft_printf("[%i]\n", b_temp->data);
+		b_temp = b_temp->next;
+	}
+	// while (b)
+	// 	push(head, &b, 'a');
+	// ft_printf("Before rotation A stack:\n");
+	// temp = *head;
+	// while (temp)
+	// {
+	// 	ft_printf("[%i]\n", temp->data);
+	// 	temp = temp->next;
+	// }
+	// rotate_until_sorted(head);
 	clear_parts(&parts);
 	exit_success(head, &b);
 }

@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:14:13 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 16:14:10 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:09:56 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void rotate_separate(t_rotate *a_rotate, t_list **a_stack, t_rotate *b_ro
 		rotate_multiple(b_stack, 'b', b_rotate->rotations, rotate);
 		return ;
 	}
+	ft_printf("Rotating b %i times as rev %i and A %i times with rev %i\n", b_rotate->rotations, b_rotate->rev_rotate, a_rotate->rotations, a_rotate->rev_rotate);
 	rotate_multiple(a_stack, 'a', a_rotate->rotations, rotate);
 	rotate_multiple(b_stack, 'b', b_rotate->rotations, rev_rotate);
 }

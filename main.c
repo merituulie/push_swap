@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:43:22 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 13:35:12 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:41:23 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ static int	has_duplicates(t_list **stack)
 		while (temp_b)
 		{
 			if (temp_a->data == temp_b->data)
+			{
+				ft_printf("duplicate value %i\n", temp_a->data);
 				return (1);
+			}
 			temp_b = temp_b->next;
 		}
 		temp_a = temp_a->next;

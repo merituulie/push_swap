@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:12:13 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 12:23:10 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:56:05 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,18 @@ int find_next_smallest(t_list *head, int smaller)
 {
 	t_list	*smallest;
 	t_list	*next_smallest;
+	t_list	*temp;
 
 	next_smallest = find_biggest(head, 0);
 	smallest = find_smallest(head, 0);
-	while (head)
+	temp = head;
+	while (temp)
 	{
-		if (head->data < next_smallest->data
-			&& head->data > smaller
-			&& head->data != smallest->data)
-			next_smallest = head;
-		head = head->next;
+		if (temp->data < next_smallest->data
+			&& temp->data > smaller
+			&& temp->data != smallest->data)
+			next_smallest = temp;
+		temp = temp->next;
 	}
 	return (next_smallest->data);
 }

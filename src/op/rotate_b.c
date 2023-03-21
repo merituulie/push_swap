@@ -13,33 +13,12 @@
 #include "../../includes/push_swap.h"
 #include "../../ft_printf/includes/ft_printf.h"
 
-static t_rotate	*rotate_or_revrotate(t_list *smaller, t_list *bigger, int size, int to_be_pushed)
+static t_list	*find_last(t_list *previous, t_list **stack)
 {
-	int halfway;
-
-	halfway = size / 2;
-	ft_printf("Got %i as the smaller node ", smaller->data);
-	ft_printf("in index %i and bigger node as %i in index %i ", smaller->index, bigger->data, bigger->index);
-	ft_printf("with value %i to be pushed\n", to_be_pushed);
-	ft_printf("%i is halfway\n", halfway);
-	if (size == 2)
-		return (rotate_size2(smaller, to_be_pushed));
-	if (size == 3)
-		return (rotate_size3(smaller, to_be_pushed));
-	if (smaller->index == (size - 1))
-		return (rttnew('b', 1, 1, smaller->data));
-	if (smaller->index < halfway)
-		return (rttnew('b', smaller->index, 0, smaller->data));
-	else
-		return (rttnew('b', (size - smaller->index), 1, smaller->data));
-}
-
-static t_rotate	*find_rotation(int to_be_pushed, t_list *previous, t_list *next, int size)
-{
-	ft_printf("previous > %i, next > %i\n", previous->data, next->data);
-	if (to_be_pushed < previous->data)
-		return (rotate_or_revrotate(next, previous, size, to_be_pushed));
-	return (rotate_or_revrotate(previous, next, size, to_be_pushed));
+	previous = *stack;
+	while (previous->next)
+		previous = previous->next;
+	return (previous);
 }
 
 static t_rotate	*middle_value(t_list **stack, int to_be_pushed, int biggest, int smallest)
@@ -52,37 +31,22 @@ static t_rotate	*middle_value(t_list **stack, int to_be_pushed, int biggest, int
 	n_index = 0;
 	p_index = lstsize(*stack) - 1;
 	next = *stack;
-	previous = *stack;
-	while (previous->next)
-		previous = previous->next;
+	previous = find_last(previous, stack);
 	ft_printf("biggest %i smallest %i\n", biggest, smallest);
 	while (next->next)
 	{
-		if (n_index != 0)
-			p_index = n_index - 1;
-		next->index = n_index;
-		previous->index = p_index;
+		iterate_indexes(previous, next, n_index, p_index);
 		ft_printf("previous %i next %i to be pushed %i\n", previous->data, next->data, to_be_pushed);
 		if (is_bs(previous, next, biggest, smallest))
 		{
-			if (n_index == 0)
-				previous = *stack;
-			else
-				previous = next;
-			next = next->next;
-			n_index++;
+			n_index = iterate_stack(previous, next, stack, n_index);
 			continue ;
 		}
 		else if (is_middle(to_be_pushed, previous, next))
 			break;
-		if (n_index == 0)
-			previous = *stack;
-		else
-			previous = next;
-		next = next->next;
-		n_index++;
+		n_index = iterate_stack(previous, next, stack, n_index);
 	}
-	return (find_rotation(to_be_pushed, previous, next, lstsize(*stack)));
+	return (find_previous(to_be_pushed, previous, next, lstsize(*stack)));
 }
 
 static t_rotate	*find_rotate(t_list **stack, int to_be_pushed, int size)

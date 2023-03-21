@@ -70,8 +70,12 @@ t_rotate	*rotate_for_smallest(t_list *small, int size);
 t_rotate	*rotate_for_biggest(t_list *big, int size);
 t_rotate	*rotate_for_smallest_middle(t_list *small, int size);
 t_rotate	*rotate_for_biggest_middle(t_list *big, int size);
+t_rotate	*rotate_or_revrotate(t_list *smaller, t_list *bigger, int size, int to_be_pushed);
 int			is_bs(t_list *previous, t_list *next, int biggest, int smallest);
 int			is_middle(int to_be_pushed, t_list *previous, t_list *next);
+void		iterate_indexes(t_list **previous, t_list **next, int n_index, int p_next);
+int			iterate_stack(t_list **previous, t_list **next, t_list **stack, int n_index);
+t_rotate	*find_previous(int to_be_pushed, t_list *previous, t_list *next, int size);
 
 // List
 t_list	*lstnew(int data);

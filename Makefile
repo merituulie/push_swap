@@ -26,6 +26,11 @@ COMMON_SRC = print_error \
 			rttnew \
 			rotate_index \
 			validate_middle_value \
+			find_previous \
+			find_rotate_bs \
+			find_rotate_middle_small \
+			find_rotate_middle \
+			iterate_stack \
 			exit
 
 PART_SRC = prtnew \

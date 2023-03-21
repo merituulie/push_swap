@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_index.c                                     :+:      :+:    :+:   */
+/*   find_rotate_middle_small.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 t_rotate	*rotate_size2(t_list *node, int to_be_pushed)
 {
@@ -39,36 +38,4 @@ t_rotate	*rotate_size3(t_list *node, int to_be_pushed)
 		return (rttnew('b', 2, 0, node->data));
 	else
 		return (rttnew('b', 0, 0, node->data));
-}
-
-t_rotate	*rotate_for_smallest(t_list *small, int size)
-{
-	if (small->index == (size - 1))
-		return (rttnew('b', 0, 0, small->data));
-	else
-		return (rttnew('b', 1, 0, small->data));
-}
-
-t_rotate	*rotate_for_smallest_middle(t_list *small, int size)
-{
-	if (small->index < size / 2)
-		return (rttnew('b', small->index + 1, 0, small->data));
-	else
-		return (rttnew('b', (size - small->index - 1), 1, small->data));
-}
-
-t_rotate	*rotate_or_revrotate_biggest(t_list *big, int size)
-{
-	if (big->index == (size - 1))
-		return (rttnew('b', 1, 1, big->data));
-	else
-		return (rttnew('b', 1, 0, big->data));
-}
-
-t_rotate	*rotate_for_biggest_middle(t_list *big, int size)
-{
-	if (big->index < size / 2)
-		return (rttnew('b', big->index, 0, big->data));
-	else
-		return (rttnew('b', (size - big->index), 1, big->data));
 }

@@ -31,6 +31,8 @@ COMMON_SRC = print_error \
 			find_rotate_middle_small \
 			find_rotate_middle \
 			iterate_stack \
+			rotate_separate \
+			rotate_one_multiple \
 			exit
 
 PART_SRC = prtnew \

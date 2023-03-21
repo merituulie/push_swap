@@ -76,6 +76,9 @@ int			is_middle(int to_be_pushed, t_list *previous, t_list *next);
 void		iterate_indexes(t_list **previous, t_list **next, int n_index, int p_next);
 int			iterate_stack(t_list **previous, t_list **next, t_list **stack, int n_index);
 t_rotate	*find_previous(int to_be_pushed, t_list *previous, t_list *next, int size);
+void		rotate_one_multiple(t_list **head, t_rotate	*rotate);
+void		rotate_multiple(t_list **head, char stack, int count, void (*f)(t_list **head, char stack));
+void		rotate_separate(t_rotate *a_rotate, t_list **a_stack, t_rotate *b_rotate, t_list **b_stack);
 
 // List
 t_list	*lstnew(int data);

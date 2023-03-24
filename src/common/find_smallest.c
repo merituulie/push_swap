@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:12:13 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/20 10:56:05 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:05:59 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_list	*find_smallest(t_list *head, int add_index)
 	return (smallest);
 }
 
-int find_next_smallest(t_list *head, int smaller)
+int	find_next_smallest(t_list *head, int smaller)
 {
 	t_list	*smallest;
 	t_list	*next_smallest;

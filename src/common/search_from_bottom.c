@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:17:42 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 16:35:48 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:07:01 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_list	*search_from_bottom(t_list **a_stack, int smallest,
 			int biggest, int max_count)
 {
-	t_list *current;
+	t_list	*current;
 	int		index;
 
 	current = *a_stack;

@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:11:23 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 13:50:59 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:56:24 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	select_part_count(int select_algorithm, int size)
 		if (size % 2 != 0)
 			part_count = 1;
 		if (size > 100)
-			return (part_count + 10);
+			return (part_count + 14);
 		else if (size % 5 == 0)
 			return (5);
 		else if (size % 4 == 0)

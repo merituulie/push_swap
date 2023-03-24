@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 21:23:05 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 13:35:59 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:08:05 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	lstsize(t_list *lst)
 
 int	get_listsize(t_list **head)
 {
-	int size;
+	int	size;
 
 	size = lstsize(*head);
 	if (size == 0 || size == 1 || size % 2 == 0)

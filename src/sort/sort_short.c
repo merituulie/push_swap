@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:42:11 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/13 17:31:47 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 14:31:10 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,15 @@ static void	sort_bigger_element_first(t_list **head)
 		exit_failure(head, NULL, NULL);
 }
 
-void	sort_short(t_list **head)
+void	sort_short(t_list **head, int from_another)
 {
 	t_list	*temp;
 
 	temp = *head;
 	if (temp->data > temp->next->data)
-	{
 		sort_bigger_element_first(head);
-	}
 	else if (temp->data < temp->next->data)
-	{
 		sort_smaller_element_first(head);
-	}
-	else
-		exit_failure(head, NULL, NULL);
+	if (!from_another)
+		clearall_throw(head, NULL, NULL, 0);
 }

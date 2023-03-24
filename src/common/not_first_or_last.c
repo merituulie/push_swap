@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:19:29 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/13 13:40:30 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:06:42 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	not_first_or_last(t_list **stack, int to_be_pushed)
 {
-	t_list *temp;
-	t_list *second;
+	t_list	*temp;
+	t_list	*second;
 
 	temp = *stack;
 	second = *stack;

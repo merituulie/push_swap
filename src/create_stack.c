@@ -6,12 +6,13 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:10:00 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 12:17:53 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:34:20 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
+#include "../ft_printf/includes/ft_printf.h"
 
 static int	validate_data(char	*input)
 {
@@ -32,7 +33,7 @@ t_list	*create_stack(char *input)
 	input_array = ft_split(input, ' ');
 	first = input_array;
 	if (!input_array || !*input_array)
-		return (clearall_throw(&stack, NULL, first, 1));
+		return (clearall_throw(&stack, NULL, first, 0));
 	while (*input_array)
 	{
 		data = ft_atoi(*input_array);

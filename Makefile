@@ -6,7 +6,7 @@
 #    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 17:41:46 by meskelin          #+#    #+#              #
-#    Updated: 2023/03/10 12:26:43 by meskelin         ###   ########.fr        #
+#    Updated: 2023/03/24 10:24:51 by meskelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,13 @@ COMMON_SRC = print_error \
 			search_from_top \
 			search_from_bottom \
 			rttnew \
-			rotate_index \
 			validate_middle_value \
 			find_previous \
 			find_rotate_bs \
 			find_rotate_middle_small \
 			find_rotate_middle \
 			iterate_stack \
-			rotate_separate \
-			rotate_one_multiple \
+			not_first_or_last \
 			exit
 
 PART_SRC = prtnew \
@@ -55,6 +53,7 @@ OP_SRC = swap \
 		 rotate \
 		 rev_rotate \
 		 rotate_multiple \
+		 rotate_one_multiple \
 		 rotate_a \
 		 rotate_b \
 		 rotate_until_sorted

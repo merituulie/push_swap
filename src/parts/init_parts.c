@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:12:55 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 13:55:18 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:13:12 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	find_part_biggest(int smallest, t_list **head, int count)
 
 static void	add_part(t_part **head, t_list **stack, int count, int last_biggest)
 {
-	int next_smallest;
-	int next_biggest;
+	int	next_smallest;
+	int	next_biggest;
 
 	next_smallest = find_next_smallest(*stack, last_biggest);
 	next_biggest = find_part_biggest(next_smallest, stack, count);

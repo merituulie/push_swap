@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:43:43 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/10 12:25:32 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 14:51:54 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	sort_medium(t_list **head)
 	index = count_index(*head, smallest);
 	rotate_a_medium(head, index, 0);
 	push(&b, head, 'b');
-	sort_short(head);
+	sort_short(head, 1);
 	push(head, &b, 'a');
 	push(head, &b, 'a');
-	exit_success(head, &b);
+	clearall_throw(head, &b, NULL, 0);
 }

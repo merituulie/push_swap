@@ -6,13 +6,14 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:16:52 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/06 14:16:52 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:16:56 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_list	*search_from_top(t_list **a_stack, int smallest, int biggest, int max_count)
+t_list	*search_from_top(t_list **a_stack, int smallest,
+			int biggest, int max_count)
 {
 	t_list	*current;
 	int		index;
@@ -30,7 +31,7 @@ t_list	*search_from_top(t_list **a_stack, int smallest, int biggest, int max_cou
 	}
 	if (current->data < smallest
 		|| current->data > biggest)
-			return (NULL);
+		return (NULL);
 	current->index = index;
 	return (current);
 }

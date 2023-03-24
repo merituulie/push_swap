@@ -6,15 +6,15 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:04:52 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/24 17:23:15 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:23:45 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../ft_printf/includes/ft_printf.h"
 
-void	exit_success(t_list **a, t_list **b)
+void	exit_success(void)
 {
-	clearall_throw(a, b, NULL, 0);
 	exit(EXIT_SUCCESS);
 }
 

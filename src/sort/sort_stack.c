@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:31:10 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 14:29:02 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:01:42 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 void	sort_stack(t_list **stack, int sort_algorithm, int part_count)
 {

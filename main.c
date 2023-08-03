@@ -6,11 +6,10 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:43:22 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:10:30 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/31 10:08:27 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf/includes/ft_printf.h"
 #include "./includes/push_swap.h"
 
 static int	is_sorted(t_list *stack)
@@ -80,8 +79,8 @@ int	main(int argc, char *argv[])
 	while (argv[i])
 	{
 		stack = create_stack(argv[i]);
-		if (!stack)
-			exit(EXIT_FAILURE);
+		if (!stack && !argv[i + 1])
+			exit_success();
 		i++;
 	}
 	sort(&stack);

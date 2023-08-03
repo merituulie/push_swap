@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:38:23 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/03 15:25:13 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:35 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 void	rotate(t_list **head, char stack)
 {

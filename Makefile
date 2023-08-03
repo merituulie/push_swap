@@ -95,14 +95,14 @@ $(NAME):
 
 .PHONY: clean
 clean:
-	make fclean -C $(LIBFT_PATH)
-	make fclean -C $(FT_PRINT_PATH)
+	make clean -C $(LIBFT_PATH)
+	make clean -C $(FT_PRINT_PATH)
 	rm -f $(SRCSO)
 
 .PHONY: fclean
 fclean: clean
-	make clean -C $(LIBFT_PATH)
-	make clean -C $(FT_PRINT_PATH)
+	make fclean -C $(LIBFT_PATH)
+	make fclean -C $(FT_PRINT_PATH)
 	rm -f $(NAME)
 
 .PHONY: re

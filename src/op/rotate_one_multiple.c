@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:23:44 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:14:06 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:26 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 void	rotate_multiple(t_list **head, char stack, int count,
 			void (*f)(t_list **head, char stack))

@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:12:13 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:59 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:59:08 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 t_list	*find_smallest(t_list *head, int add_index)
 {

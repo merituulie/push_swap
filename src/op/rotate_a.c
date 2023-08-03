@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:49 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:16:26 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:09 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 t_rotate	*rotate_a(t_list *first_hold, t_list *second_hold, int max_count)
 {

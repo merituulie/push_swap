@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:12:25 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:22:49 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:59:57 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 static void	handle_from(t_list **from_stack)
 {

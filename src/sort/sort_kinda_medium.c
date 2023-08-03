@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 14:51:59 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 14:29:41 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:22:31 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ static void	rotate_middle(t_list **head, int index)
 		rotate(head, 'a');
 		rotate(head, 'a');
 	}
-	if (index == 3)
-	{
-		rev_rotate(head, 'a');
-		rev_rotate(head, 'a');
-	}
 }
 
 static void	rotate_a_middle(t_list **head, int index)
@@ -60,9 +55,9 @@ static void	rotate_a_middle(t_list **head, int index)
 		return ;
 	if (index == 1)
 		rotate(head, 'a');
-	if (index == 2 || index == 3)
+	if (index == 2)
 		rotate_middle(head, index);
-	if (index == 4)
+	if (index == 3)
 		rev_rotate(head, 'a');
 }
 

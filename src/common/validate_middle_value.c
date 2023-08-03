@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:47:44 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/20 22:47:44 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:59:32 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 int	is_bs(t_list *previous, t_list *next, int biggest, int smallest)
 {

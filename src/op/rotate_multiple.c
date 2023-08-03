@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:14:13 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:15:19 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:21 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 static void	rotate_multiple_both(t_list **a_stack, t_list **b_stack,
 				int count, void (*f)(t_list **head, char stack))

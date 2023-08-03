@@ -6,13 +6,12 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:48:38 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/27 16:51:36 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:53 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 #include "../../libft/libft.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 t_part	*prtnew(int smallest, int biggest)
 {

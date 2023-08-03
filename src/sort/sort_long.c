@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:49:10 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:12:29 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:01:17 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 static void	reinit_indexes(t_list *first_hold, t_list *second_hold)
 {

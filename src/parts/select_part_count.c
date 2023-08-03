@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:11:23 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 15:56:24 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:59 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 int	select_part_count(int select_algorithm, int size)
 {

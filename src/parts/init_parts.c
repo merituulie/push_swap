@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:12:55 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:13:12 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:00:43 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 static int	find_part_biggest(int smallest, t_list **head, int count)
 {

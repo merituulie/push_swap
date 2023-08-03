@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:48:12 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:09:51 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:25:46 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,7 @@
 # define KINDA_MEDIUM_ALG 4
 # define MEDIUM_ALG 5
 # define LONG_ALG 6
-
-typedef struct s_list
-{
-	int				data;
-	int				index;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
+ 
 
 typedef struct s_part
 {

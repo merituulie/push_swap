@@ -6,12 +6,11 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:58:22 by meskelin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:47 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:59:04 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include "../../ft_printf/includes/ft_printf.h"
 
 t_rotate	*rotate_or_revrotate(t_list *smaller, int size, int to_be_pushed)
 {

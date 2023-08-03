@@ -6,7 +6,7 @@
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:43:04 by meskelin          #+#    #+#             */
-/*   Updated: 2023/02/27 12:08:20 by meskelin         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:21:33 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	select_algorithm(int max_count)
 	else if (max_count <= SHORT_ALG)
 		return (SHORT_ALG);
 	else if (max_count <= KINDA_MEDIUM_ALG)
-		return (SHORT_ALG);
+		return (KINDA_MEDIUM_ALG);
 	else if (max_count <= MEDIUM_ALG)
 		return (MEDIUM_ALG);
 	else
